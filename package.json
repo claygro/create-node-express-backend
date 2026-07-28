@@ -1,0 +1,11 @@
+{
+  "name": "create-node-express-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "create-node-express-backend": "./index.js"
+  },
+  "scripts": {},
+  "dependencies": {}
+}
