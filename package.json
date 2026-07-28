@@ -6,6 +6,14 @@
   "bin": {
     "create-node-express-backend": "./index.js"
   },
+  "keywords": [
+    "nodejs",
+    "express",
+    "backend",
+    "cli",
+    "scaffold",
+    "generator"
+  ],
   "scripts": {},
   "dependencies": {}
 }
