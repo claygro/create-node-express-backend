@@ -1,5 +1,5 @@
 import fs from "node:fs";
-function createUtils() {
+function createUtils(projectName) {
   fs.writeFileSync(
     `${projectName}/src/utils/generateToken.js`,
     `
@@ -17,8 +17,7 @@ export const generateAccessToken = (user) => {
     },
   );
 };
-
-
-        `,
+`,
   );
 }
+export default createUtils;

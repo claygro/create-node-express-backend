@@ -8,6 +8,7 @@ import { exec, execSync } from "node:child_process";
 import createModels from "./models.js";
 import createControllers from "./controllers.js";
 import createRoutes from "./routes.js";
+import createUtils from "./utils.js";
 let projectName = process.argv[2];
 
 if (!projectName) {
@@ -57,6 +58,8 @@ createModels(projectName);
 createControllers(projectName);
 // create routes
 createRoutes(projectName);
+// create utils
+createUtils(projectName);
 //.env
 fs.writeFileSync(
   `${projectName}/.env`,
