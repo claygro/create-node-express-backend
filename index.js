@@ -34,11 +34,11 @@ fs.writeFileSync(
   `${projectName}/index.js`,
   `
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
+import mongoose from "mongoose";
+import "dotenv/config";
 import authRoutes from "./src/routes/auth.routes.js"
 import cookieParser from "cookie-parser";
-dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -47,8 +47,13 @@ app.use("/auth", authRoutes)
 app.get("/", (req,res)=>{
     res.send("Backend Running");
 });
-app.listen(process.env.PORT,()=>{
-    console.log("Server running");
+app.listen(process.env.PORT, async()=>{
+  try{
+     await mongoose.connect(process.env.MONGO_DB_CONNECTION_URL)
+     console.log("Server is started");
+  }catch(error){
+     console.log("Error in starting the server: ", error);
+  }
 });
     `,
 );
@@ -65,7 +70,8 @@ fs.writeFileSync(
   `${projectName}/.env`,
   `
 PORT=8000
-      
+JWT_SECRET_KEY= YOUR JWT_SECRET_KEY
+MONGO_DB_CONNECTION_URL= YOUR MONGO_DB_CONNECTION_URL
     `,
 );
 
