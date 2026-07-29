@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 import fs from "node:fs";
 //fs means file system. It is a built-in nodejs module which let us to work with files and folder
 import { exec, execSync } from "node:child_process";
@@ -7,6 +6,7 @@ import { exec, execSync } from "node:child_process";
 //execSync means execute synchronously.
 // It runs a terminal command and waits until it finishes before moving to the next line.
 import createModels from "./models.js";
+import createControllers from "./controllers.js";
 let projectName = process.argv[2];
 
 if (!projectName) {
@@ -21,7 +21,7 @@ fs.mkdirSync(`${projectName}`);
 fs.mkdirSync(`${projectName}/src`);
 
 //create src subFolders
-const folders = ["controllers", "models", "routes", "middlewares"];
+const folders = ["controllers", "models", "routes", "middlewares", "utils"];
 folders.forEach((folder) => {
   fs.mkdirSync(`${projectName}/src/${folder}`);
   console.log("folder is created");
@@ -50,6 +50,8 @@ app.listen(process.env.PORT,()=>{
 );
 //create models
 createModels(projectName);
+//create controllers
+createControllers(projectName);
 //.env
 fs.writeFileSync(
   `${projectName}/.env`,
@@ -72,8 +74,11 @@ execSync("npm init -y", {
   stdio: "inherit",
 });
 //npm install
-execSync("npm install express nodemon mongoose dotenv cookie-parser cors", {
-  cwd: projectName, //cwd(current working directory)
-  stdio: "inherit", //stdio means standard input output
-});
+execSync(
+  "npm install express nodemon mongoose dotenv cookie-parser cors jsonwebtoken argon2",
+  {
+    cwd: projectName, //cwd(current working directory)
+    stdio: "inherit", //stdio means standard input output
+  },
+);
 console.log("project setup completed");
