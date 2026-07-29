@@ -6,8 +6,8 @@ import { exec, execSync } from "node:child_process";
 //child_process is a node.js module that allows your js program to run other programs or teminal commands from inside your code.
 //execSync means execute synchronously.
 // It runs a terminal command and waits until it finishes before moving to the next line.
-
-const projectName = process.argv[2];
+import createModels from "./models.js";
+let projectName = process.argv[2];
 
 if (!projectName) {
   throw new Error(
@@ -48,7 +48,8 @@ app.listen(process.env.PORT,()=>{
 });
     `,
 );
-
+//create models
+createModels(projectName);
 //.env
 fs.writeFileSync(
   `${projectName}/.env`,
@@ -57,6 +58,7 @@ PORT=8000
       
     `,
 );
+
 //.gitignore
 fs.writeFileSync(
   `${projectName}/.gitignore`,
@@ -70,7 +72,7 @@ execSync("npm init -y", {
   stdio: "inherit",
 });
 //npm install
-execSync("npm install express nodemon dotenv cookie-parser cors", {
+execSync("npm install express nodemon mongoose dotenv cookie-parser cors", {
   cwd: projectName, //cwd(current working directory)
   stdio: "inherit", //stdio means standard input output
 });
