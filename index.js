@@ -89,10 +89,14 @@ execSync("npm init -y", {
 });
 //npm install
 execSync(
-  "npm install express nodemon mongoose dotenv cookie-parser cors jsonwebtoken argon2",
+  "npm install express mongoose dotenv cookie-parser cors jsonwebtoken argon2",
   {
     cwd: projectName, //cwd(current working directory)
     stdio: "inherit", //stdio means standard input output
   },
 );
+execSync("npm install nodemon -D", {
+  cwd: projectName, //cwd(current working directory)
+  stdio: "inherit", //stdio means standard input output
+});
 console.log("project setup completed");

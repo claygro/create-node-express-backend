@@ -1,8 +1,4 @@
-import fs from "node:fs";
-function createControllers(projectName) {
-  fs.writeFileSync(
-    `${projectName}/src/controllers/auth.controllers.js`,
-    `
+
 import authModel from "../models/auth.models.js";
 import jwt from "jsonwebtoken";
 import argon2 from "argon2";
@@ -98,7 +94,4 @@ class AuthControllers {
 export default AuthControllers;
 
 
-    `,
-  );
-}
-export default createControllers;
+    

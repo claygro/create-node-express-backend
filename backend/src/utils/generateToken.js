@@ -1,8 +1,4 @@
-import fs from "node:fs";
-function createUtils(projectName) {
-  fs.writeFileSync(
-    `${projectName}/src/utils/generateToken.js`,
-    `
+
 import jwt from "jsonwebtoken";
 
 export const generateAccessToken = (user) => {
@@ -17,7 +13,3 @@ export const generateAccessToken = (user) => {
     },
   );
 };
-`,
-  );
-}
-export default createUtils;
