@@ -99,4 +99,16 @@ execSync("npm install nodemon -D", {
   cwd: projectName, //cwd(current working directory)
   stdio: "inherit", //stdio means standard input output
 });
+// update package.json
+const packageJsonPath = `${projectName}/package.json`;
+
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
+
+packageJson.type = "module";
+
+packageJson.scripts = {
+  start: "nodemon index.js",
+};
+
+fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 console.log("project setup completed");
