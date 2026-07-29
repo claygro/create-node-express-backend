@@ -7,6 +7,7 @@ import { exec, execSync } from "node:child_process";
 // It runs a terminal command and waits until it finishes before moving to the next line.
 import createModels from "./models.js";
 import createControllers from "./controllers.js";
+import createRoutes from "./routes.js";
 let projectName = process.argv[2];
 
 if (!projectName) {
@@ -34,12 +35,14 @@ fs.writeFileSync(
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import authRoutes from "./src/routes/auth.routes.js"
 import cookieParser from "cookie-parser";
 dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+app.use("/auth", authRoutes)
 app.get("/", (req,res)=>{
     res.send("Backend Running");
 });
@@ -52,6 +55,8 @@ app.listen(process.env.PORT,()=>{
 createModels(projectName);
 //create controllers
 createControllers(projectName);
+// create routes
+createRoutes(projectName);
 //.env
 fs.writeFileSync(
   `${projectName}/.env`,

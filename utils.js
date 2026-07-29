@@ -1,8 +1,9 @@
-import fs from "node:fs"
-function createUtils(){
-    fs.writeFileSync(`${projectName}/src/utils/generateToken.js`,
-        `
-        import jwt from "jsonwebtoken";
+import fs from "node:fs";
+function createUtils() {
+  fs.writeFileSync(
+    `${projectName}/src/utils/generateToken.js`,
+    `
+import jwt from "jsonwebtoken";
 
 export const generateAccessToken = (user) => {
   return jwt.sign(
@@ -13,10 +14,11 @@ export const generateAccessToken = (user) => {
     process.env.JWT_SECRET_KEY,
     {
       expiresIn: "7d",
-    }
+    },
   );
 };
 
-        `
-    )
+
+        `,
+  );
 }
