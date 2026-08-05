@@ -1,32 +1,98 @@
 # create-node-express-backend
 
-An automated CLI tool that can setup **Node.js + Express.js** backend in seconds. It eliminates repetitive setup by generating a clean project structure, installing essential dependencies, and providing a ready-to-use authentication boilerplate.
+<p align="center">
+  <strong>A powerful CLI tool to scaffold ready Node.js + Express.js backends in seconds.</strong>
+</p>
+
+<p align="center">
+  Eliminate repetitive setup by generating a clean backend architecture, installing dependencies,
+  configuring authentication, and extending your project with modular feature generators.
+</p>
 
 ---
 
 ## ✨ Features
 
-- 🚀 Instantly create a Node.js + Express backend
-- 📁 Organized project structure
-- 🔐 Authentication boilerplate included
-- 🔑 JWT token generation utility
-- 🔒 Password hashing using Argon2
-- 🍪 Cookie-based authentication support
-- 🌐 MongoDB (Mongoose) pre-configured
-- ⚡ Express server initialized and ready to run
-- 📦 Essential dependencies installed automatically
-- 🔄 Nodemon configured for development
+### 🚀 Project Generator
+
+- Create a complete **Node.js + Express.js** backend instantly
+- Organized and scalable folder structure
+- MongoDB (Mongoose) configuration
+- Express server setup
+- Authentication boilerplate
+- JWT token utility
+- Password hashing with Argon2
+- Cookie-based authentication
+- Environment variables
+- Nodemon configuration
+- ES Module support
 
 ---
 
-## 📂 Generated Folder Structure
+### 🧩 Feature Generators
+
+Add new features to an **existing backend** without recreating the project.
+
+Implemented:
+
+- ✅ Socket.IO
+
+Example:
+
+```bash
+npx create-node-express-backend <project-name> --socket
+```
+
+
+
+---
+
+# 📂 Project Structure
 
 ```text
-<project-name>/
+create-node-express-backend/
+│
+├── bin/
+│   └── index.js                      # CLI entry point
+│
+├── generators/
+│   │
+│   ├── project/
+│   │   └── backend.generators.js     # Generates a new backend project
+│   │
+│   ├── features/
+│   │   └── socket.generators.js      # Adds Socket.IO support
+│   │
+│   └── files/
+│       ├── controllers.js            # Controller templates
+│       ├── models.js                 # Model templates
+│       ├── routes.js                 # Route templates
+│       └── utils.js                  # Utility templates
+│
+├── package.json
+├── README.md
+└── .gitignore
+```
+
+---
+
+# 📦 Generated Backend Structure
+
+Running
+
+```bash
+npx create-node-express-backend my-backend
+```
+
+creates
+
+```text
+my-backend/
 │
 ├── node_modules/
 │
 ├── src/
+│   │
 │   ├── controllers/
 │   │   └── auth.controllers.js
 │   │
@@ -40,7 +106,8 @@ An automated CLI tool that can setup **Node.js + Express.js** backend in seconds
 │   ├── utils/
 │   │   └── generateToken.js
 │   │
-│   └── index.js
+│   └── socket/               # Generated when using --socket
+│       └── socket.js
 │
 ├── .env
 ├── .gitignore
@@ -51,13 +118,9 @@ An automated CLI tool that can setup **Node.js + Express.js** backend in seconds
 
 ---
 
-## 📦 What's Included?
+# 📦 Installed Packages
 
-### Pre-installed Dependencies
-
-The following packages are installed automatically:
-
-#### Dependencies
+## Dependencies
 
 - express
 - mongoose
@@ -67,120 +130,169 @@ The following packages are installed automatically:
 - jsonwebtoken
 - argon2
 
-#### Development Dependencies
+When using
+
+```bash
+--socket
+```
+
+the CLI automatically installs
+
+- socket.io
+
+---
+
+## Development Dependencies
 
 - nodemon
 
 ---
 
-## 🔐 Authentication Boilerplate
+# 🔐 Authentication Boilerplate
 
-The generated project includes a complete authentication starter setup:
+The generated backend includes authentication out of the box.
 
-- `auth.controllers.js`
-  - Register user
-  - Login user
+### Controllers
 
-- `auth.routes.js`
-  - Authentication routes already configured
+- Register User
+- Login User
 
-- `generateToken.js`
-  - JWT token generation utility
+### Routes
 
-The authentication routes are also initialized in the Express application, allowing you to start building immediately without additional setup.
+- Authentication routes
+
+### Utilities
+
+- JWT Token Generator
+
+Authentication routes are automatically connected to the Express application.
 
 ---
 
-## 🚀 Getting Started
+# 🚀 Installation
 
-Run the package directly using **npx**:
+No installation required.
+
+Run directly using **npx**
 
 ```bash
 npx create-node-express-backend <project-name>
 ```
 
-Example:
+Example
 
 ```bash
-npx create-node-express-backend my-backend
+npx create-node-express-backend backend
 ```
-
-Then navigate into your project:
-
-```bash
-cd my-backend
-```
-
-After creating the project, open the `package.json` file and make the following changes.
-
-### Enable ES Modules
-
-Add the following property:
-
-```json
-{
-  "type": "module"
-}
-```
-
-### Configure the Start Script
-
-Update the `scripts` section to:
-
-```json
-"scripts": {
-  "start": "nodemon ."
-}
-```
-
-or
-```json
-"scripts": {
-"start": "nodemon <your-main-file>"
-}
-```
-For example, if your entry file is index.js:
-```json
-"scripts": {
-"start": "nodemon index.js"
-}
-```
-Or if it's app.js:
-```json
-"scripts": {
-"start": "nodemon app.js"
-}
-
-````
 
 ---
 
-## ⚙️ Environment Variables
+# 🧩 Add Features Later
 
-Create or update your `.env` file with your own configuration.
+One of the biggest advantages of this CLI is that you don't need to recreate your project.
 
 Example:
+
+Create backend
+
+```bash
+npx create-node-express-backend backend
+```
+
+Later...
+
+Add Socket.IO
+
+```bash
+npx create-node-express-backend backend --socket
+```
+
+The CLI will automatically
+
+- Install required packages
+- Create required folders
+- Generate necessary files
+- Update existing files
+- Keep your project intact
+
+---
+
+# ⚙️ Environment Variables
+
+The CLI generates a `.env` file.
+
+Example
 
 ```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-````
+PORT=8000
+
+JWT_SECRET_KEY=YOUR_SECRET_KEY
+
+MONGO_DB_CONNECTION_URL=YOUR_MONGODB_CONNECTION_STRING
+```
 
 ---
 
-## 🎯 Why Use This?
+# 📖 Commands
 
-Setting up a backend project often involves repeating the same tasks:
+## Create Backend
+
+```bash
+npx create-node-express-backend backend
+```
+
+---
+
+## Add Socket.IO
+
+```bash
+npx create-node-express-backend backend --socket
+```
+
+---
+
+# 🎯 Why create-node-express-backend?
+
+Building a backend usually involves repeating the same setup steps every time:
 
 - Creating folders
-- Installing dependencies
 - Configuring Express
-- Setting up MongoDB
-- Creating authentication files
+- Installing packages
+- Connecting MongoDB
+- Setting up authentication
 - Configuring JWT
-- Setting up environment variables
+- Creating environment variables
+- Creating utility functions
+- Setting up development scripts
 
-**create-node-express-backend** automates all of these steps so you can spend more time building your application instead of writing boilerplate.
+This CLI automates all of these tasks, allowing you to focus on building your application instead of writing boilerplate code.
 
 ---
+
+# 🚀 Roadmap
+
+- [x] Backend Generator
+- [x] Authentication Boilerplate
+- [x] Socket.IO Generator
+- [ ] Multer Generator
+- [ ] Cloudinary Generator
+- [ ] Swagger Generator
+- [ ] Redis Generator
+- [ ] BullMQ Generator
+- [ ] OpenAI SDK Generator
+- [ ] Gemini SDK Generator
+- [ ] Claude SDK Generator
+- [ ] Email Generator
+- [ ] Docker Support
+- [ ] Testing Generator
+
+---
+
+# 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome.
+
+Feel free to fork the repository and submit a Pull Request.
+
+---
+
