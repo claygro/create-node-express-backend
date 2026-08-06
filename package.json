@@ -4,7 +4,7 @@
   "type": "module",
   "main": "index.js",
   "bin": {
-    "create-node-express-backend": "./index.js"
+    "create-node-express-backend": "./bin/index.js"
   },
   "keywords": [
     "nodejs",
