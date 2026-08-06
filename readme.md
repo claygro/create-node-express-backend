@@ -267,26 +267,7 @@ Building a backend usually involves repeating the same setup steps every time:
 
 This CLI automates all of these tasks, allowing you to focus on building your application instead of writing boilerplate code.
 
----
 
-# 🚀 Roadmap
-
-- [x] Backend Generator
-- [x] Authentication Boilerplate
-- [x] Socket.IO Generator
-- [ ] Multer Generator
-- [ ] Cloudinary Generator
-- [ ] Swagger Generator
-- [ ] Redis Generator
-- [ ] BullMQ Generator
-- [ ] OpenAI SDK Generator
-- [ ] Gemini SDK Generator
-- [ ] Claude SDK Generator
-- [ ] Email Generator
-- [ ] Docker Support
-- [ ] Testing Generator
-
----
 
 # 🤝 Contributing
 

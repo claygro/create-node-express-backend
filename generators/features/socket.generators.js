@@ -26,7 +26,12 @@ export default function initializeSocket(server) {
 
   io.on("connection", (socket) => {
     console.log("Client Connected :", socket.id);
-
+    socket.on("message", (data) => {
+      console.log("received data:", data);
+      socket.emit("reply", {
+        message: data,
+      });
+    });
     socket.on("disconnect", () => {
       console.log("Client Disconnected :", socket.id);
     });
