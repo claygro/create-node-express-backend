@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import fs from "node:fs";
 import createBackend from "../generators/project/backend.generators.js";
 import createSocket from "../generators/features/socket.generators.js";

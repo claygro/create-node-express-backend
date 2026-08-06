@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+
 import fs from "node:fs";
 //fs means file system. It is a built-in nodejs module which let us to work with files and folder
 import { exec, execSync } from "node:child_process";
